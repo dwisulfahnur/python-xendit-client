@@ -37,5 +37,3 @@ def test_create_wrong_ewallet_type():
         err = e
 
     assert err.__class__.__name__ == 'InvalidArgumentException'
-
-test_
