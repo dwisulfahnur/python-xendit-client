@@ -20,7 +20,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
-    python_requires='>=3.4',
+    python_requires='>=3.6',
     install_requires=['requests>=2.3.0'],
     tests_requires=['pytest>=3.0.6']
 )
