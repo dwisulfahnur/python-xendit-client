@@ -2,6 +2,7 @@ import json
 
 import requests
 
+from .balance import BalanceClient
 from .ewallets import EwalletClient
 from .exeptions import APIErrorException, JSONDecodeError, InvalidArgumentException
 
@@ -84,3 +85,7 @@ class XenditClient(object):
     @property
     def ewallet(self):
         return EwalletClient(client=self)
+
+    @property
+    def balance(self):
+        return BalanceClient(client=self)
