@@ -71,7 +71,7 @@ class XenditClient(object):
                 response_dict=response_dict
             )
 
-        return response_dict, response_object
+        return response_dict
 
     def validate_params(self, params, required_params):
         for key in required_params:
