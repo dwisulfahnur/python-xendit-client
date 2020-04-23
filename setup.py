@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='xenditclient',
-    version='0.0.2',
+    version='0.0.3',
     packages=['tests', 'xenditclient'],
     url='https://github.com/dwisulfahnur/python-xendit-client',
     license='BSD 3-Clause',
