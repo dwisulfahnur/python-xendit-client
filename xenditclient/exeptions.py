@@ -20,3 +20,7 @@ class APIErrorException(Exception):
 
 class InvalidArgumentException(Exception):
     pass
+
+
+class InvalidAccountType(Exception):
+    pass
