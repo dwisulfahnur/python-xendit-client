@@ -23,6 +23,14 @@ from xenditclient import XenditClient
 
 client = XenditClient(api_key='<your-secret-key>')
 ```
+### Get Balance
+```python
+res_dict = client.balance.get_balance('CASH')
+print(res_dict)
+# {
+#   'balance': 1000137690
+# }
+```
 
 ### EWallets
 #### Create Payment
@@ -35,7 +43,7 @@ params = {
   'phone':'081234567890'
 }
 
-res_dict, _ = client.ewallet.create(params)
+res_dict = client.ewallet.create(params)
 print(res_dict)
 # {
 #   "business_id": "12345678",
@@ -50,7 +58,7 @@ print(res_dict)
 #### Get Payment Status
 
 ```python
-res_dict, _ = client.ewallet.get_payment_status(external_id='21345', payment_method='OVO')
+res_dict = client.ewallet.get_payment_status(external_id='21345', payment_method='OVO')
 print(res_dict)
 # {
 #   "amount": "10000",
