@@ -1,4 +1,4 @@
-# Python Xendit Clinet API
+# Python Xendit Client API
 
 [![Build Status](https://travis-ci.com/dwisulfahnur/python-xendit-client.svg?branch=master)](https://travis-ci.com/dwisulfahnur/python-xendit-client)
 [![PyPI version](https://badge.fury.io/py/xenditclient.svg)](https://badge.fury.io/py/xenditclient)
