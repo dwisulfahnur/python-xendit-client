@@ -10,10 +10,11 @@ from .exeptions import APIErrorException, JSONDecodeError, InvalidArgumentExcept
 class XenditClient(object):
     BASE_URL = 'https://api.xendit.co'
 
-    def __init__(self, api_key, api_version=None):
+    def __init__(self, api_key, api_version=None, user_id=None):
         self.http_client = requests
         self.api_key = api_key
         self.api_version = api_version
+        self.user_id = user_id
 
     def set_api_key(self, api_key):
         self.api_key = api_key
@@ -21,8 +22,14 @@ class XenditClient(object):
     def set_api_version(self, api_version):
         self.api_version = api_version
 
+    def set_user_id(self, user_id):
+        self.user_id = user_id
+
     def get_api_version(self, api_version):
         return self.api_version
+
+    def get_user_id(self):
+        return self.user_id
 
     def send_request(self, method, request_url, parameters=None):
         if isinstance(parameters, str):
@@ -40,8 +47,12 @@ class XenditClient(object):
             'accept': 'application/json',
             'user-agent': 'xenditclient-python/0.0.1'
         }
+
         if self.api_version:
             headers['x-api-version'] = self.api_version
+
+        if self.user_id:
+            headers['for-user-id'] = self.user_id
 
         response_object = self.http_client.request(
             method,
