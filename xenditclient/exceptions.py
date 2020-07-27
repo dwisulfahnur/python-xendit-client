@@ -24,3 +24,7 @@ class InvalidArgumentException(Exception):
 
 class InvalidAccountType(Exception):
     pass
+
+
+class InvalidQrCodeType(Exception):
+    pass
