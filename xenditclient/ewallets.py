@@ -1,4 +1,4 @@
-from .exeptions import InvalidArgumentException
+from .exceptions import InvalidArgumentException
 
 
 class EwalletClient(object):

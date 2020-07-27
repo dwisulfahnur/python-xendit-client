@@ -1,4 +1,4 @@
-from .exeptions import InvalidAccountType
+from .exceptions import InvalidAccountType
 
 
 class BalanceClient(object):
