@@ -103,5 +103,5 @@ class XenditClient(object):
         return BalanceClient(client=self)
 
     @property
-    def qrcodes(self):
+    def qrcode(self):
         return QRCodesClient(client=self)
