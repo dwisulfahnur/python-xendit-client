@@ -4,7 +4,8 @@ import requests
 
 from .balance import BalanceClient
 from .ewallets import EwalletClient
-from .exeptions import APIErrorException, JSONDecodeError, InvalidArgumentException
+from .exceptions import APIErrorException, JSONDecodeError, InvalidArgumentException
+from .qrcodes import QRCodesClient
 
 
 class XenditClient(object):
@@ -100,3 +101,7 @@ class XenditClient(object):
     @property
     def balance(self):
         return BalanceClient(client=self)
+
+    @property
+    def qrcodes(self):
+        return QRCodesClient(client=self)
