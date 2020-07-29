@@ -21,10 +21,12 @@ class VirtualAccountClient(object):
 
     def create(self, external_id, bank_code, name, **kwargs):
         """
-        :param params:
+        :required params:
             external_id: str
             bank_code: str
             name: str
+
+        :optional params:
             virtual_account_number: str // Optional
             suggested_amount: int // Optional
             is_closed: bool // Optional
@@ -32,6 +34,7 @@ class VirtualAccountClient(object):
             expiration_date: UTC datetime // Optional
             is_single_use: bool // Optional
             description: str // Optional
+
         :return:
         """
         virtual_account_number = kwargs.get('virtual_account_number')
