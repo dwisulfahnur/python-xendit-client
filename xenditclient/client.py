@@ -6,6 +6,7 @@ from .balance import BalanceClient
 from .ewallets import EwalletClient
 from .exceptions import APIErrorException, JSONDecodeError, InvalidArgumentException
 from .qrcodes import QRCodesClient
+from .virtual_accounts import VirtualAccountClient
 
 
 class XenditClient(object):
@@ -46,7 +47,7 @@ class XenditClient(object):
         headers = {
             'content-type': 'application/json',
             'accept': 'application/json',
-            'user-agent': 'xenditclient-python/0.0.1'
+            'user-agent': 'python-xenditclient/0.0.5'
         }
 
         if self.api_version:
@@ -105,3 +106,7 @@ class XenditClient(object):
     @property
     def qrcode(self):
         return QRCodesClient(client=self)
+
+    @property
+    def virtual_account(self):
+        return VirtualAccountClient(client=self)
