@@ -113,5 +113,125 @@ print(data)
 #   "updated": "2020-07-27T07:44:31.420Z"
 # }
 ```
+### Virtual Account
+
+Get Virtual Account Client
+
+```python
+va_client = client.virtual_account
+# or
+from xenditclient.virtual_accounts import VirtualAccountClient
+
+qrcode = VirtualAccountClient(client)
+```
+
+Get Virtual Account Banks
+```python
+data = va_client.get_va_banks()
+print(data)
+# [
+#     {'name': 'Bank Mandiri', 'code': 'MANDIRI'}, 
+#     {'name': 'Bank Negara Indonesia', 'code': 'BNI'},
+#     {'name': 'Bank Rakyat Indonesia', 'code': 'BRI'}, 
+#     {'name': 'Bank Permata', 'code': 'PERMATA'},
+#     {'name': 'Bank Central Asia', 'code': 'BCA'}
+# ]
+```
+
+Create Virtual Account Payment
+
+```python
+from xenditclient import virtual_accounts
+
+data = va_client.create(
+    external_id="DS-INV-01", 
+    bank_code=virtual_accounts.BNI, 
+    name="Dwi Sulfahnur", 
+)
+"""
+You can add the following additional options 
+for the Virtual Account as arguments:
+  - virtual_account_number: str // Optional
+  - suggested_amount: int // Optional
+  - is_closed: bool // Optional
+  - expected_amount: int // Optional
+  - expiration_date: UTC datetime // Optional
+  - is_single_use: bool // Optional
+  - description: str // Optional
+"""
+
+print(data)
+# {
+#     "is_closed": true,
+#     "status": "PENDING",
+#     "currency": "IDR",
+#     "owner_id": "5efab44e31890e1415bb70e9",
+#     "external_id": "ZICARE-01",
+#     "bank_code": "MANDIRI",
+#     "merchant_code": "88908",
+#     "name": "Dwi Sulfahnur",
+#     "account_number": "889089999000001",
+#     "suggested_amount": 15500,
+#     "expected_amount": 15500,
+#     "is_single_use": true,
+#     "expiration_date": "2051-07-27T17:00:00.000Z",
+#     "id": "5f1fd5470af2e8475877ba21"
+# }
+```
+
+Get  Virtual Account Payment Detail
+```python
+data = va_client.get_payment_detail("5f1fd5470af2e8475877ba21")
+print(data)
+# {
+#     "is_closed": true,
+#     "status": "PENDING",
+#     "currency": "IDR",
+#     "owner_id": "5efab44e31890e1415bb70e9",
+#     "external_id": "ZICARE-01",
+#     "bank_code": "MANDIRI",
+#     "merchant_code": "88908",
+#     "name": "Dwi Sulfahnur",
+#     "account_number": "889089999000001",
+#     "suggested_amount": 15500,
+#     "expected_amount": 15500,
+#     "is_single_use": true,
+#     "expiration_date": "2051-07-27T17:00:00.000Z",
+#     "id": "5f1fd5470af2e8475877ba21"
+# }
+```
+
+Update Virtual Account Payment Detail
+```python
+from datetime import datetime
+
+data = va_client.update_payment_detail(
+    payment_id="5f1fd5470af2e8475877ba21",
+    suggested_amount=20000,
+    expected_amount=20000,
+    expiration_date=datetime(2020, 12, 31, 00, 00, 00).isoformat(),
+    is_single_use=True,
+    description="Subscription Payment",
+)
+
+print(data)
+# {
+#     "is_closed": true,
+#     "status": "PENDING",
+#     "currency": "IDR",
+#     "owner_id": "5efab44e31890e1415bb70e9",
+#     "external_id": "ZICARE-01",
+#     "bank_code": "MANDIRI",
+#     "merchant_code": "88908",
+#     "name": "Dwi Sulfahnur",
+#     "account_number": "889089999000001",
+#     "suggested_amount": 20000,
+#     "expected_amount": 20000,
+#     "is_single_use": true,
+#     "expiration_date": "2020-12-31T17:00:00.000Z",
+#     "id": "5f1fd5470af2e8475877ba21",
+#     "description": "Subscription Payment",
+# }
+```
 ## Legal 
 Disclaimer: This library is not affliated with Xendit. This is an independent and unofficial Library.
